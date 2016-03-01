@@ -1,54 +1,36 @@
-<div
-  class="ui-grid-filter-container"
-  ng-repeat="colFilter in col.filters"
-  ng-class="{'ui-grid-filter-cancel-button-hidden' : colFilter.disableCancelFilterButton === true }">
-  <div
-    ng-if="colFilter.type !== 'select'">
-    <input
-      type="text"
-      class="ui-grid-filter-input ui-grid-filter-input-{{$index}}"
-      ng-model="colFilter.term"
-      ng-attr-placeholder="{{colFilter.placeholder || ''}}"
-      aria-label="{{colFilter.ariaLabel || aria.defaultFilterLabel}}" />
-
-    <div
-      role="button"
-      class="ui-grid-filter-button"
-      ng-click="removeFilter(colFilter, $index)"
-      ng-if="!colFilter.disableCancelFilterButton"
-      ng-disabled="colFilter.term === undefined || colFilter.term === null || colFilter.term === ''"
-      ng-show="colFilter.term !== undefined && colFilter.term !== null && colFilter.term !== ''">
-      <i
-        class="ui-grid-icon-cancel"
-        ui-grid-one-bind-aria-label="aria.removeFilter">
-        &nbsp;
-      </i>
+<div class="ui-grid-filter-container"
+     ng-repeat="colFilter in col.filters"
+     ng-class="{'ui-grid-filter-cancel-button-hidden' : colFilter.disableCancelFilterButton === true }">
+    <div ng-if="colFilter.type !== 'select'" layout="row" layout-align="center start">
+        <md-input-container class="md-grid-filter-input">
+            <label>Filter Results</label>
+            <input ng-model="colFilter.term" aria-label="{{colFilter.ariaLabel || aria.defaultFilterLabel}}" class="ui-grid-filter-input " />
+        </md-input-container>
+        <md-button role="button "
+                   class="ui-grid-filter-button md-grid-filter-button md-warn md-hue2 md-icon-button md-grid-button "
+                   aria-label=" Remove Filter Button "
+                   ng-click="removeFilter(colFilter, $index) "
+                   ng-if="!colFilter.disableCancelFilterButton "
+                   ng-disabled="colFilter.term===u ndefined || colFilter.term===n ull || colFilter.term==='' "
+                   ng-show="colFilter.term !==u ndefined && colFilter.term !==n ull && colFilter.term !=='' ">
+            <i class="ui-grid-icon-cancel " ui-grid-one-bind-aria-label="aria.removeFilter ">&nbsp;</i>
+        </md-button>
     </div>
-  </div>
-
-  <div
-    ng-if="colFilter.type === 'select'">
-    <select
-      class="ui-grid-filter-select ui-grid-filter-input-{{$index}}"
-      ng-model="colFilter.term"
-      ng-attr-placeholder="{{colFilter.placeholder || aria.defaultFilterLabel}}"
-      aria-label="{{colFilter.ariaLabel || ''}}"
-      ng-options="option.value as option.label for option in colFilter.selectOptions">
-      <option value=""></option>
-    </select>
-
-    <div
-      role="button"
-      class="ui-grid-filter-button-select"
-      ng-click="removeFilter(colFilter, $index)"
-      ng-if="!colFilter.disableCancelFilterButton"
-      ng-disabled="colFilter.term === undefined || colFilter.term === null || colFilter.term === ''"
-      ng-show="colFilter.term !== undefined && colFilter.term != null">
-      <i
-        class="ui-grid-icon-cancel"
-        ui-grid-one-bind-aria-label="aria.removeFilter">
-        &nbsp;
-      </i>
+    <div ng-if="colFilter.type==='select' ">
+        <select class="ui-grid-filter-select ui-grid-filter-input-{{$index}} "
+                ng-model="colFilter.term "
+                ng-attr-placeholder="{{colFilter.placeholder || aria.defaultFilterLabel}} "
+                aria-label="{{colFilter.ariaLabel || ''}} "
+                ng-options="option.value as option.label for option in colFilter.selectOptions ">
+            <option value=" "></option>
+        </select>
+        <div role="button "
+             class="ui-grid-filter-button-select "
+             ng-click="removeFilter(colFilter, $index) "
+             ng-if="!colFilter.disableCancelFilterButton "
+             ng-disabled="colFilter.term===u ndefined || colFilter.term===n ull || colFilter.term==='' "
+             ng-show="colFilter.term !==u ndefined && colFilter.term !=n ull ">
+            <i class="ui-grid-icon-cancel " ui-grid-one-bind-aria-label="aria.removeFilter ">&nbsp;</i>
+        </div>
     </div>
-  </div>
 </div>

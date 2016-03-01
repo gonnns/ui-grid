@@ -700,76 +700,97 @@
       };
     }]);
 
-  module.directive('uiGridSelectionRowHeaderButtons', ['$templateCache', 'uiGridSelectionService', 'gridUtil',
-    function ($templateCache, uiGridSelectionService, gridUtil) {
-      return {
-        replace: true,
-        restrict: 'E',
-        template: $templateCache.get('ui-grid/selectionRowHeaderButtons'),
-        scope: true,
-        require: '^uiGrid',
-        link: function($scope, $elm, $attrs, uiGridCtrl) {
-          var self = uiGridCtrl.grid;
-          $scope.selectButtonClick = selectButtonClick;
+  module.directive('uiGridSelectionRowHeaderButtons', uiGridSelectionRowHeaderButtons);
+    uiGridSelectionRowHeaderButtons.$inject = ['$templateRequest', '$compile', 'uiGridSelectionService', 'gridUtil']
+    function uiGridSelectionRowHeaderButtons ($templateRequest, $compile, uiGridSelectionService, gridUtil) {
+        return {
+            replace: true,
+            restrict: 'E',
+            scope: true,
+            require: '^uiGrid',
+            link: linkFunc
+        };
 
-          // On IE, prevent mousedowns on the select button from starting a selection.
-          //   If this is not done and you shift+click on another row, the browser will select a big chunk of text
-          if (gridUtil.detectBrowser() === 'ie') {
-            $elm.on('mousedown', selectButtonMouseDown);
-          }
+        function linkFunc ($scope, $elm, $attrs, uiGridCtrl) {
+            $templateRequest('ui-grid/selectionRowHeaderButtons').then((html) => {
+                var template;
+                template = angular.element(html);
+                $elm.append(template);
+                $compile(template)($scope);
+            });
+            var self = uiGridCtrl.grid;
+            $scope.selectButtonClick = selectButtonClick;
 
-
-          function selectButtonClick(row, evt) {
-            evt.stopPropagation();
-
-            if (evt.shiftKey) {
-              uiGridSelectionService.shiftSelect(self, row, evt, self.options.multiSelect);
+            // On IE, prevent mousedowns on the select button from starting a selection.
+            //   If this is not done and you shift+click on another row, the browser will select a big chunk of text
+            if (gridUtil.detectBrowser() === 'ie') {
+                $elm.on('mousedown', selectButtonMouseDown);
             }
-            else if (evt.ctrlKey || evt.metaKey) {
-              uiGridSelectionService.toggleRowSelection(self, row, evt, self.options.multiSelect, self.options.noUnselect);
-            }
-            else {
-              uiGridSelectionService.toggleRowSelection(self, row, evt, (self.options.multiSelect && !self.options.modifierKeysToMultiSelect), self.options.noUnselect);
-            }
-          }
 
-          function selectButtonMouseDown(evt) {
-            if (evt.ctrlKey || evt.shiftKey) {
-              evt.target.onselectstart = function () { return false; };
-              window.setTimeout(function () { evt.target.onselectstart = null; }, 0);
+
+            function selectButtonClick(row, evt) {
+                evt.stopPropagation();
+
+                if (evt.shiftKey) {
+                    uiGridSelectionService.shiftSelect(self, row, evt, self.options.multiSelect);
+                } else if (evt.ctrlKey || evt.metaKey) {
+                    uiGridSelectionService.toggleRowSelection(self, row, evt, self.options.multiSelect, self.options.noUnselect);
+                } else {
+                    uiGridSelectionService.toggleRowSelection(self, row, evt, (self.options.multiSelect && !self.options.modifierKeysToMultiSelect), self.options.noUnselect);
+                }
             }
-          }
+
+            function selectButtonMouseDown(evt) {
+                if (evt.ctrlKey || evt.shiftKey) {
+                    evt.target.onselectstart = function () {
+                        return false;
+                    };
+                    window.setTimeout(function () {
+                        evt.target.onselectstart = null;
+                    }, 0);
+                }
+            }
         }
-      };
-    }]);
+    }
 
-  module.directive('uiGridSelectionSelectAllButtons', ['$templateCache', 'uiGridSelectionService',
-    function ($templateCache, uiGridSelectionService) {
-      return {
-        replace: true,
-        restrict: 'E',
-        template: $templateCache.get('ui-grid/selectionSelectAllButtons'),
-        scope: false,
-        link: function($scope, $elm, $attrs, uiGridCtrl) {
-          var self = $scope.col.grid;
+  module.directive('uiGridSelectionSelectAllButtons', uiGridSelectionSelectAllButtons);
 
-          $scope.headerButtonClick = function(row, evt) {
-            if ( self.selection.selectAll ){
-              uiGridSelectionService.clearSelectedRows(self, evt);
-              if ( self.options.noUnselect ){
-                self.api.selection.selectRowByVisibleIndex(0, evt);
-              }
-              self.selection.selectAll = false;
-            } else {
-              if ( self.options.multiSelect ){
-                self.api.selection.selectAllVisibleRows(evt);
-                self.selection.selectAll = true;
-              }
-            }
-          };
+    uiGridSelectionSelectAllButtons.$inject = ['$templateRequest', '$compile', 'uiGridSelectionService'];
+    function uiGridSelectionSelectAllButtons ($templateRequest, $compile, uiGridSelectionService) {
+        return {
+            replace: true,
+            restrict: 'E',
+            scope: false,
+            link: linkFunc
+        };
+
+        function linkFunc ($scope, $elm, $attrs, uiGridCtrl) {
+
+            $templateRequest('ui-grid/selectionSelectAllButtons').then((html) => {
+               var template;
+                template = angular.element(html);
+                $elm.append(template);
+                $compile(template)($scope);
+            });
+
+            var self = $scope.col.grid;
+
+            $scope.headerButtonClick = function (row, evt) {
+                if (self.selection.selectAll) {
+                    uiGridSelectionService.clearSelectedRows(self, evt);
+                    if (self.options.noUnselect) {
+                        self.api.selection.selectRowByVisibleIndex(0, evt);
+                    }
+                    self.selection.selectAll = false;
+                } else {
+                    if (self.options.multiSelect) {
+                        self.api.selection.selectAllVisibleRows(evt);
+                        self.selection.selectAll = true;
+                    }
+                }
+            };
         }
-      };
-    }]);
+    }
 
   /**
    *  @ngdoc directive

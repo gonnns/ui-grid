@@ -1,6 +1,8 @@
-<div
-  class="ui-grid-selection-row-header-buttons ui-grid-icon-ok"
-  ng-class="{'ui-grid-row-selected': row.isSelected}"
-  ng-click="selectButtonClick(row, $event)">
-  &nbsp;
-</div>
+<md-checkbox ng-checked="row.isSelected"
+             aria-label="Select Row"
+             class="md-primary ui-grid-selection-row-header-buttons"
+             ng-click="selectButtonClick(row, $event)"
+             ng-class="{'ui-grid-row-selected': row.isSelected}"
+             flex>
+    {{row.isSelected}}>
+</md-checkbox>

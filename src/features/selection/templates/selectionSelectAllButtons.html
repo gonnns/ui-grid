@@ -1,5 +1,5 @@
-<div
-  class="ui-grid-selection-row-header-buttons ui-grid-icon-ok"
-  ng-class="{'ui-grid-all-selected': grid.selection.selectAll}"
-  ng-click="headerButtonClick($event)">
-</div>
+<md-checkbox ng-checked="grid.selection.selectAll"
+             aria-label="Select All"
+             class="ui-grid-selection-row-header-buttons md-primary md-hue2"
+             ng-class="{'ui-grid-all-selected': grid.selection.selectAll}"
+             ng-click="headerButtonClick($event)"></md-checkbox>

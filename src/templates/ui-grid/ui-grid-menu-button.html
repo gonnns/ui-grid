@@ -1,11 +1,13 @@
 <div class="ui-grid-menu-button">
-  <div role='button'
-       ui-grid-one-bind-id-grid="'grid-menu'"
-       class="ui-grid-icon-container"
-       ng-click="toggleMenu()"
-       aria-haspopup="true">
-    <i class="ui-grid-icon-menu"
-       ui-grid-one-bind-aria-label="i18n.aria.buttonLabel">&nbsp;</i>
-  </div>
-  <div ui-grid-menu menu-items="menuItems"></div>
+    <md-menu md-offset="0 -5" class="ui-grid-menu-mid" ng-show="true">
+        <md-button role="button"
+                   ui-grid-one-bind-id-grid="'grid-menu'"
+                   class="ui-grid-icon-container md-icon-button md-grid-button"
+                   ng-click="$mdOpenMenu($event)"
+                   aria-haspopup="true"
+                   aria-label="Open Grid Menu">
+            <i class="ui-grid-icon-menu" ui-grid-one-bind-aria-label="i18n.aria.buttonLabel">&nbsp;</i>
+        </md-button>
+        <div ui-grid-menu menu-items="menuItems"></div>
+    </md-menu>
 </div>
