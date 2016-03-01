@@ -1,3 +1,7 @@
+.grid {
+    height: 80%;
+}
+
 .ui-grid-top-panel-no-filter {
     max-height: 30px;
 }
@@ -100,4 +104,21 @@
 
 .md-grid-cell-contents {
     height: 30px;
+}
+
+.ui-grid-menu-button {
+    z-index: 0;
+}
+
+
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child {
+    border: none !important;
+}
+
+.ui-grid-selection-row-header-buttons {
+    opacity: 1 !important;
+}
+
+.md-grid-column-menu-button {
+    color: #ffffff;
 }
