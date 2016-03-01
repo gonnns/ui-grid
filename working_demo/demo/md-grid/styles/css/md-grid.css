@@ -1,0 +1,103 @@
+.ui-grid-top-panel-no-filter {
+    max-height: 30px;
+}
+
+.ui-grid-top-panel-has-filter {
+    max-height: 80px;
+}
+
+.ui-grid-header-cell-wrapper {
+/*    max-height: 30px;*/
+}
+
+.md-button.md-icon-button.md-grid-button {
+    padding: 0px;
+    top: -8px;
+    margin: 0px;
+    height: 30px;
+    min-height: 0px;
+    min-width: 0;
+    line-height: 24px;
+    width: 30px;
+    border-radius: 50%;
+    //background: limegreen;
+}
+
+.md-grid-md-button-has-filter {
+    padding: 0px;
+    line-height: 0px;
+    margin: 0px;
+    min-height: 0px;
+/*    height: 30px;*/
+    width: 100%;
+    padding-top: 12px;
+    text-align: left;
+}
+
+.md-grid-md-button-no-filter {
+    padding: 0px;
+    line-height: 0px;
+    margin: 0px;
+    min-height: 0px;
+/*    height: 30px;*/
+    width: 100%;
+    text-align: left;
+}
+
+.ui-grid-column-menu {
+    position: absolute;
+    right: -30px;
+    top: 36px;
+}
+
+.md-menu {
+    padding: 8px 0;
+    float: right;
+    top: -30px;
+    position: relative;
+    height: 10px;
+    width: 30px;
+    display: block;
+}
+
+.ui-grid-column-menu-button {
+    position: absolute;
+    right: 1px;
+    top: 0px;
+    width: 22px;
+    min-width: 0px;
+    min-height: 0px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px;
+}
+
+.md-grid-menu-item-button {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    text-align: left;
+}
+
+.md-open-menu-container md-menu-content > * {
+    opacity: 1 !important;
+}
+
+.md-grid-filter {
+    top: -10px;
+    position: relative;
+}
+
+.md-grid-filter-input {
+    width: 90% !important;
+}
+
+.md-grid-filter-button {
+    top: 25px !important;
+    right: 15px !important;
+}
+
+.md-grid-cell-contents {
+    height: 30px;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "angular-material-grid",
+  "description": "A Google Material Design themed version of the original ui-grid",
+  "main": "index.js",
+  "authors": [
+    "tuckerjt07@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "material",
+    "design",
+    "material",
+    "ui-grid",
+    "material-design",
+    "angular-material-design"
+  ],
+  "homepage": "https://github.com/tuckerjt07/ui-grid",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-grid": "ui-grid#~3.1.1"
+  }
+}

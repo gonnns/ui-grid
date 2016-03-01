@@ -1,0 +1,36 @@
+{
+  "name": "angular-material-grid",
+  "version": "0.0.1",
+  "description": "A Google Material Design themed version of the original ui-grid",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuckerjt07/ui-grid.git"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "design",
+    "material",
+    "ui-grid",
+    "material-design",
+    "angular-material-design"
+  ],
+  "author": "tuckerjt07@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tuckerjt07/ui-grid/issues"
+  },
+  "homepage": "https://github.com/tuckerjt07/ui-grid#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-aria": "^1.5.0",
+    "angular-material": "^1.0.5",
+    "angular-ui-grid": "^3.1.1",
+    "ui-grid": "0.0.0"
+  }
+}
