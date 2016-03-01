@@ -701,7 +701,7 @@
     }]);
 
   module.directive('uiGridSelectionRowHeaderButtons', uiGridSelectionRowHeaderButtons);
-    uiGridSelectionRowHeaderButtons.$inject = ['$templateRequest', '$compile', 'uiGridSelectionService', 'gridUtil']
+    uiGridSelectionRowHeaderButtons.$inject = ['$templateRequest', '$compile', 'uiGridSelectionService', 'gridUtil'];
     function uiGridSelectionRowHeaderButtons ($templateRequest, $compile, uiGridSelectionService, gridUtil) {
         return {
             replace: true,
@@ -712,7 +712,7 @@
         };
 
         function linkFunc ($scope, $elm, $attrs, uiGridCtrl) {
-            $templateRequest('ui-grid/selectionRowHeaderButtons').then((html) => {
+            $templateRequest('ui-grid/selectionRowHeaderButtons').then(function (html) {
                 var template;
                 template = angular.element(html);
                 $elm.append(template);
@@ -766,7 +766,7 @@
 
         function linkFunc ($scope, $elm, $attrs, uiGridCtrl) {
 
-            $templateRequest('ui-grid/selectionSelectAllButtons').then((html) => {
+            $templateRequest('ui-grid/selectionSelectAllButtons').then(function (html) {
                var template;
                 template = angular.element(html);
                 $elm.append(template);
