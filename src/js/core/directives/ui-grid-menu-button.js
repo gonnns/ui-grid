@@ -374,18 +374,9 @@ function (gridUtil, uiGridConstants, uiGridGridMenuService, i18nService) {
 
       uiGridGridMenuService.initialize($scope, uiGridCtrl.grid);
 
-      $scope.shown = false;
+      $scope.menuItems = uiGridGridMenuService.getMenuItems($scope);
 
-      $scope.toggleMenu = function () {
-        if ( $scope.shown ){
-          $scope.$broadcast('hide-menu');
-          $scope.shown = false;
-        } else {
-          $scope.menuItems = uiGridGridMenuService.getMenuItems( $scope );
-          $scope.$broadcast('show-menu');
-          $scope.shown = true;
-        }
-      };
+      $scope.shown = false;
 
       $scope.$on('menu-hidden', function() {
         $scope.shown = false;
